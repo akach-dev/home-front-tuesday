@@ -1,31 +1,65 @@
 .message {
+    text-align: right;
+}
 
+.message > *:not(:last-child) {
+    margin-bottom: .5em;
+}
+
+.message:not(:last-child) {
+    margin-bottom: 47px;
 }
 
 .imageAndText {
-
+    display: flex;
+    flex-direction: row-reverse;
+    column-gap: 0.8rem;
 }
 
 .imageAndText img {
-
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    align-self: flex-end;
 }
 
 .text {
+    background-color: rgba(0, 102, 204, 1);
+    padding: .5rem .9rem;
+    color: #FFF;
+    border-radius: 10px;
+    position: relative;
+}
 
+.text > *:not(:last-child) {
+    margin-bottom: .5em;
 }
 
 .text:after {
-
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: -13px;
+    width: 0;
+    height: 0;
+    border: 0 solid transparent;
+    border-right-width: 30px;
+    border-left-width: 0px;
+    border-bottom: 23px solid rgba(0, 102, 204, 1);
 }
 
 .name {
-
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .messageText {
+    font-weight: 400;
 
 }
 
 .time {
-
+    font-size: 10px;
+    font-weight: 600;
+    padding-right: 10px;
 }
