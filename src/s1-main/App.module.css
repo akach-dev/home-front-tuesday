@@ -10,7 +10,7 @@
 }
 
 .hw > *:not(:last-child) {
-    margin-bottom: 70px;
+    /*margin-bottom: 70px;*/
 }
 
 .hwTitle {
