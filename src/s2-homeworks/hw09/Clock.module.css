@@ -1,15 +1,27 @@
 .buttonsContainer {
+    display: flex;
+    gap: 21px;
 }
 
 .clock {
+    font-size: 20px;
 }
 
 .watch {
 }
 
+.watch:not(:last-child) {
+    margin-bottom: 13px;
+}
+
 .watch strong {
+    font-weight: 600;
 }
 
 .more {
     margin-top: 8px;
+}
+
+.more:last-child {
+    margin-bottom: 23px;
 }

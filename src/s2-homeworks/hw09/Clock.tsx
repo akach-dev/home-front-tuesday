@@ -9,7 +9,6 @@ function Clock() {
   const [date, setDate] = useState<Date>(new Date(restoreState('hw9-date', Date.now())))
   const [show, setShow] = useState<boolean>(false)
 
-  console.log(timerId)
 
   const start = () => {
     // пишут студенты // запустить часы (должно отображаться реальное время, а не +1)
@@ -38,6 +37,7 @@ function Clock() {
     setShow(false)
 
   }
+  
   let formatter1 = new Intl.DateTimeFormat("ru");
 
   const stringTime = new Intl.DateTimeFormat("ru", {
