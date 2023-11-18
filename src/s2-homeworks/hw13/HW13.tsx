@@ -41,7 +41,7 @@ const HW13 = () => {
        })
        .catch((e) => {
          if (e.response.status === 400 || e.response.status === 500) {
-           setCode(` Ошибка ${e.response.status}!`);
+           setCode(e.response.status.toString());
            setText(e.response.data.errorText);
            setInfo(e.response.data.info);
          } else {
@@ -71,15 +71,17 @@ const HW13 = () => {
            </SuperButton>
            <SuperButton
               id={'hw13-send-false'}
-              onClick={send(undefined)}
               xType={'secondary'}
+              onClick={send(false)}
+
               disabled={info === '...loading'}
            >
              Send false
            </SuperButton>
            <SuperButton
               id={'hw13-send-undefined'}
-              onClick={send(false)}
+              onClick={send(undefined)}
+
               xType={'secondary'}
               disabled={info === '...loading'}
            >

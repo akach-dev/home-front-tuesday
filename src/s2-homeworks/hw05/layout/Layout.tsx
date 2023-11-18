@@ -1,7 +1,6 @@
 import React, {FC, ReactNode, useEffect, useState} from 'react'
 import {Header} from '../header/Header'
 import {Sidebar} from '../sidebar/Sidebar'
-import {Outlet} from "react-router-dom";
 
 type PropsType = {
   children: ReactNode
