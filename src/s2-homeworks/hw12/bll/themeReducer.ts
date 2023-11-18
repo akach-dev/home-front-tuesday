@@ -4,9 +4,7 @@ const initState = {
 
 export const themeReducer = (state: InitStateType = initState, action: ActionsType): InitStateType => { // fix any
   switch (action.type) {
-
     case "SET_THEME_ID":
-      debugger
       return {
         ...state, themeId: action.id
       }
