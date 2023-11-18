@@ -1,8 +1,15 @@
-.container {
+.container > :not(:last-child) {
+    margin-bottom: 2rem;
 }
 
 .wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .number {
+    color: #000;
+    font-weight: 600;
+    line-height: 1.25
 }

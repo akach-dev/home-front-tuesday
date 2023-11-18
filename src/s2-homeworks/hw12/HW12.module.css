@@ -19,5 +19,5 @@ html {
 }
 
 .select {
-
+    text-transform: capitalize;
 }
