@@ -1,22 +1,41 @@
-.buttonsContainer {
+.buttonsContainer > :not(:last-child) {
+    margin-right: 24px;
 }
 
 .responseContainer {
+    min-height: 373px;
+    display: flex;
+    align-items: center;
+
 }
 
 .imageContainer {
+    flex: 50%;
+    padding-right: 15px;
+    text-align: right;
 }
 
 .image {
 }
 
-.textContainer{
+.textContainer {
+    flex: 50%;
+    padding-left: 15px;
+    font-weight: 500;
+
 }
 
 .code {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.code:not(:last-child) {
+    margin-bottom: 13px;
 }
 
 .text {
 }
+
 .info {
 }
