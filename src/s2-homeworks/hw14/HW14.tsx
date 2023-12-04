@@ -14,76 +14,77 @@ import {useSearchParams} from 'react-router-dom'
 * */
 
 const getTechs = (find: string) => {
-    return axios
-        .get<{ techs: string[] }>(
-            'https://samurai.it-incubator.io/api/3.0/homework/test2',
-            {params: {find}}
-        )
-        .catch((e) => {
-            alert(e.response?.data?.errorText || e.message)
-        })
+  return axios.get<{ techs: string[] }>('https://samurai.it-incubator.io/api/3.0/homework/test2',
+     {params: {find}}
+  )
+
 }
 
 const HW14 = () => {
-    const [find, setFind] = useState('')
-    const [isLoading, setLoading] = useState(false)
-    const [searchParams, setSearchParams] = useSearchParams()
-    const [techs, setTechs] = useState<string[]>([])
+  const [find, setFind] = useState('')
+  const [isLoading, setLoading] = useState(false)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [techs, setTechs] = useState<string[]>([])
 
-    const sendQuery = (value: string) => {
-        setLoading(true)
-        getTechs(value)
-            .then((res) => {
-                // делает студент
+  const sendQuery = (value: string) => {
+    setLoading(true)
+    getTechs(value)
+       .then((res) => {
+         // делает студент
+         setTechs(res.data.techs)
+         // сохранить пришедшие данные
+       })
+       .catch((e) => {
+         alert(e.response?.data?.errorText || e.message)
+       })
+       .finally(() => {
+         setLoading(false)
+       })
+  }
 
-                // сохранить пришедшие данные
+  const onChangeText = (value: string) => {
+    setFind(value)
+    // делает студент
 
-                //
-            })
-    }
+    // добавить/заменить значение в квери урла
+    // setSearchParams(
+    setSearchParams(value)
+    //
+  }
 
-    const onChangeText = (value: string) => {
-        setFind(value)
-        // делает студент
+  useEffect(() => {
+    const params = Object.fromEntries(searchParams)
+    console.log(params)
+    sendQuery(params.find || '')
+    setFind(params.find || '')
+  }, [])
 
-        // добавить/заменить значение в квери урла
-        // setSearchParams(
+  const mappedTechs = techs.map(t => (
+     <div key={t} id={'hw14-tech-' + t} className={s.tech}>
+       {t}
+     </div>
+  ))
 
-        //
-    }
+  return (
+     <div id={'hw14'}>
+       <div className={s2.hwTitle}>Homework #14</div>
 
-    useEffect(() => {
-        const params = Object.fromEntries(searchParams)
-        sendQuery(params.find || '')
-        setFind(params.find || '')
-    }, [])
+       <div className={s2.hw}>
+         <SuperDebouncedInput
+            id={'hw14-super-debounced-input'}
+            value={find}
+            onChangeText={onChangeText}
+            onDebouncedChange={sendQuery}
+         />
 
-    const mappedTechs = techs.map(t => (
-        <div key={t} id={'hw14-tech-' + t} className={s.tech}>
-            {t}
-        </div>
-    ))
+         <div id={'hw14-loading'} className={s.loading}>
+           {isLoading ? '...ищем' : <br/>}
+         </div>
 
-    return (
-        <div id={'hw14'}>
-            <div className={s2.hwTitle}>Homework #14</div>
-
-            <div className={s2.hw}>
-                <SuperDebouncedInput
-                    id={'hw14-super-debounced-input'}
-                    value={find}
-                    onChangeText={onChangeText}
-                    onDebouncedChange={sendQuery}
-                />
-
-                <div id={'hw14-loading'} className={s.loading}>
-                    {isLoading ? '...ищем' : <br/>}
-                </div>
-
-                {mappedTechs}
-            </div>
-        </div>
-    )
+         {mappedTechs}
+       </div>
+     </div>
+  )
 }
 
 export default HW14
