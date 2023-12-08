@@ -1,9 +1,16 @@
 .pagination {
     display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 14px;
+}
+
+.pagination:not(:last-child) {
+    margin-bottom: 39px;
 }
 
 .text1 {
-
+    text-transform: capitalize;
 }
 
 .text2 {

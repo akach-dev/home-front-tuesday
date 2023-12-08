@@ -7,6 +7,7 @@
 .hw {
     padding: 2rem;
     border: 1px solid #D9D9D9;;
+    min-height: 350px;
 }
 
 .hw > *:not(:last-child) {
